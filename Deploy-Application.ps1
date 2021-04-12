@@ -141,7 +141,7 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
-		$exitCode = Execute-MSI -Action Install -Path "$dirFiles\ArcGISPro.msi" -Parameters 'ALLUSERS=1 ESRI_LICENSE_HOST=27004@VMWAS22.WINAD.MSUDENVER.EDU SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=CONCURRENT_USE INSTALLDIR="C:\MyArcGISPro\" ENABLEEUEI=0 /qn' -PassThru
+		$exitCode = Execute-MSI -Action Install -Path "$dirFiles\ArcGISPro.msi" -Parameters 'ALLUSERS=1 CHECKFORUPDATESATSTARTUP=0 SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=NAMED_USER INSTALLDIR="C:\MyArcGISPro\" Portal_List="https://msudenver.maps.arcgis.com" ENABLEEUEI=0 /qn' -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 
