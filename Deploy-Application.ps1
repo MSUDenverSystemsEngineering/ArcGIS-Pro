@@ -217,6 +217,10 @@ Try {
 			Execute-MSI @ExecuteDefaultMSISplat
 		}
 		# <Perform Repair tasks here>
+		#Uninstall ArcGIS Pro 2.7
+		Execute-MSI -Action Uninstall -Path '{FBBB144A-B4BE-49A0-95C4-1007E3A42FA5}' -Parameters '/qn'
+		#Install ArcGIS Pro 2.7
+		Execute-MSI -Action Install -Path "$dirFiles\ArcGISPro.msi" -Parameters 'ALLUSERS=1 CHECKFORUPDATESATSTARTUP=0 ESRI_LICENSE_HOST=27004@VMWAS22.WINAD.MSUDENVER.EDU SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=NAMED_USER INSTALLDIR="C:\MyArcGISPro\" ENABLEEUEI=0 /qn' -PassThru
 
 		##*===============================================
 		##* POST-REPAIR
