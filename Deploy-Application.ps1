@@ -71,8 +71,8 @@ Try {
 	[string]$appArch = 'x64'
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
-	[string]$appScriptVersion = '1.0.0'
-	[string]$appScriptDate = '01/26/2021'
+	[string]$appScriptVersion = '1.2.0'
+	[string]$appScriptDate = '04/14/2021'
 	[string]$appScriptAuthor = 'James Hardy'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
@@ -121,7 +121,7 @@ Try {
 		[string]$installPhase = 'Pre-Installation'
 
 		## Show Welcome Message, close Internet Explorer if required, verify there is enough disk space to complete the install, and persist the prompt
-		Show-InstallationWelcome -CloseApps 'arcmap, arcglobe, arcscene, arcgisadmin, arccatalog' -CheckDiskSpace -PersistPrompt
+		Show-InstallationWelcome -CloseApps 'arcmap, ArcGISPro, arcglobe, arcscene, arcgisadmin, arccatalog' -CheckDiskSpace -PersistPrompt
 
 		## Show Progress Message (with the default message)
 		Show-InstallationProgress
@@ -141,7 +141,7 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
-		$exitCode = Execute-MSI -Action Install -Path "$dirFiles\ArcGISPro.msi" -Parameters 'ALLUSERS=1 CHECKFORUPDATESATSTARTUP=0 SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=NAMED_USER INSTALLDIR="C:\MyArcGISPro\" Portal_List="https://msudenver.maps.arcgis.com" ENABLEEUEI=0 /qn' -PassThru
+		$exitCode = Execute-MSI -Action Install -Path "$dirFiles\ArcGISPro.msi" -Parameters 'ALLUSERS=1 CHECKFORUPDATESATSTARTUP=0 SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=NAMED_USER INSTALLDIR="C:\MyArcGISPro\" License_URL="https://msudenver.maps.arcgis.com" ENABLEEUEI=0 /qn' -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 
