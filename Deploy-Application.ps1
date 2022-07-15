@@ -210,10 +210,11 @@ Try {
 		}
 
 		# <Perform Uninstallation tasks here>
+		<#
 		Write-Log -Message "Attempting to run Desktop Runtime 6.0.6 uninstaller..." -Source 'Installation' -LogType 'CMTrace'
 		$exitCode = Execute-Process -Path "msiexec.exe" -Parameters "/x{B9E46F95-AC34-4943-AFE2-B72EFD56C6C0} /quiet /norestart /log $Env:windir\Logs\Software\DesktopRuntime6.0.6-uninstall.log" -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
-
+		#>
 		Write-Log -Message "Attempting to run ArcGIS Pro uninstaller..." -Source 'Installation' -LogType 'CMTrace'
 		$exitCode = Execute-Process -Path "msiexec.exe" -Parameters "/x{FE78CD1B-4B17-4634-BBF7-3A597FFFAA69} /quiet /norestart /log $Env:windir\Logs\Software\ArcGISPro3.0-uninstall.log" -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
@@ -278,8 +279,8 @@ Catch {
 # SIG # Begin signature block
 # MIIU9wYJKoZIhvcNAQcCoIIU6DCCFOQCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUxFd1JB6i6SyrDcKZfKE5G/cG
-# /eKgghHXMIIFbzCCBFegAwIBAgIQSPyTtGBVlI02p8mKidaUFjANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUSwBjMdtIUbY8gPSaTcPf94D1
+# A3ygghHXMIIFbzCCBFegAwIBAgIQSPyTtGBVlI02p8mKidaUFjANBgkqhkiG9w0B
 # AQwFADB7MQswCQYDVQQGEwJHQjEbMBkGA1UECAwSR3JlYXRlciBNYW5jaGVzdGVy
 # MRAwDgYDVQQHDAdTYWxmb3JkMRowGAYDVQQKDBFDb21vZG8gQ0EgTGltaXRlZDEh
 # MB8GA1UEAwwYQUFBIENlcnRpZmljYXRlIFNlcnZpY2VzMB4XDTIxMDUyNTAwMDAw
@@ -379,13 +380,13 @@ Catch {
 # ZSBTaWduaW5nIENBIFIzNgIRAKVN33D73PFMVIK48rFyyjEwCQYFKw4DAhoFAKB4
 # MBgGCisGAQQBgjcCAQwxCjAIoAKAAKECgAAwGQYJKoZIhvcNAQkDMQwGCisGAQQB
 # gjcCAQQwHAYKKwYBBAGCNwIBCzEOMAwGCisGAQQBgjcCARUwIwYJKoZIhvcNAQkE
-# MRYEFF42nYYpRl5yM/Mq4zR0AyUYEdOGMA0GCSqGSIb3DQEBAQUABIIBgASIelHY
-# ubTUKHp2ljECKfFBzbIBWyWlZA/XolQcJDfG5xCBieaBB4yx2RdC0aY6Xn2a2nVK
-# u38zk+3hOnUtS06nqIXGAO+iKCulqhaHWDrwBDC3kGg74MEvfr2TbbAGR5ig5s8R
-# oFaGFOwW8kKYO1b9IbZfiAF2lsPenwQxllF5McYST8fZw5u1YnDzRT6TDgWZqDXW
-# dTcrZ+pf6JgLjGMAvr+4MtlIFhs417C7Eem7XsNUqsIqQyXJ/auxb7JCF0M7vGY0
-# n1M4FMSVBE/jDrgtECAgCJC7dHZl2W9nKwAv2V9chRWsRc9g44rTZHlNdAJOckT1
-# lwOXj+J2hySPYcTqVbgg093AB9euCLEXzkoODNOcG00XB88TkWFc7ZngohjNsgbR
-# Wu8Ci78nYc3sl6RmXbsF3tKTunO5aS2zH+GB0Xag7z+MMU82S9ehnM3iJBmZ4Nr8
-# EJasQakU7btSah2skUO/NSKnGtkYmPnHtcG7wx066SGbeQXqwp/LOz6Crg==
+# MRYEFJT8Z2Kp9TXHo9kMG+XTdjykZwJbMA0GCSqGSIb3DQEBAQUABIIBgJg3lC35
+# 1jf0BxwVvHd2hSVfhqsjjZVYwUXEeTWtdaK9hohfva59eUfItZaRvZnoVokaSZ8a
+# 7pQcQdNwQVb4G3LME6pCT1tFMFtuViBbPARjln+jnHyg3VVzBoE4lgffJeH5Up2F
+# Ktml0si78PYoFjsbE9BFO8O7ZoOGXIAwYb3nhHaOxLIyA/tszhac9ZzlexTJVB+p
+# JQ01XqGu2/8U7wAUObREN1IA2KuNcG4u9kJ9LQLU7Q6Zz1XCmHUDDKexQfmotd+2
+# vF7tSNanp/SSE7O336xxzm32MA+jI4RjVEQqJ51waQa5a7NuWmTeDdrt/kmJqzhG
+# 2NSOFMADvSbZaxZALHTrGPG2qTBeMVr+cn6QrmOjhp4KgBs3OCZsS1CKaYuW6LY/
+# VOmbSVq77saPWpiL9WAP454wiU4GgMCqiGds9XcoXdQWBiQxedre7Oo3H7r3Z6gR
+# 6lJB/faUFVzpqu1OX57/EHxGq1LSKe6Nd9FQcEiYaGmVl3Ws7OHgkUZkvA==
 # SIG # End signature block
