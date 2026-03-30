@@ -152,7 +152,7 @@ function Install-ADTDeployment
     }
 
     ## <Perform Installation tasks here>
-    Start-ADTMsiProcess -FilePath "ArcGISPro.msi" -Action Install -ArgumentList "/qn ALLUSERS=1 CHECKFORUPDATESATSTARTUP=0 SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=NAMED_USER ENABLEEUEI=0 ACCEPTEULA=YES" -PassThru
+    Start-ADTMsiProcess -FilePath "ArcGISPro.msi" -Action Install -ArgumentList "/qn ALLUSERS=1 ACCEPTEULA=YES SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=NAMED_USER LICENSE_URL=`"https://msudenver.maps.arcgis.com`""
 
     ##================================================
     ## MARK: Post-Install
