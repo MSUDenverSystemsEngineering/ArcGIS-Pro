@@ -95,14 +95,14 @@ $adtSession = @{
     # App variables.
     AppVendor = 'ESRI'
     AppName = 'ArcGIS Pro'
-    AppVersion = '3.5'
+    AppVersion = '3.7'
     AppArch = 'x64'
     AppLang = 'en'
     AppRevision = ''
     AppSuccessExitCodes = @(0)
     AppRebootExitCodes = @(1641, 3010)
     AppScriptVersion = '1.0.0'
-    AppScriptDate = '06/17/2025'
+    AppScriptDate = '07/07/2026'
     AppScriptAuthor = 'Will Jarvill'
 
     # Install Titles (Only set here to override defaults set by the toolkit).
@@ -152,7 +152,7 @@ function Install-ADTDeployment
     }
 
     ## <Perform Installation tasks here>
-    Start-ADTMsiProcess -FilePath "ArcGISPro.msi" -Action Install -ArgumentList "/qn ALLUSERS=1 ACCEPTEULA=YES SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=NAMED_USER LICENSE_URL=`"https://msudenver.maps.arcgis.com`""
+    Start-ADTMsiProcess -FilePath "ArcGISPro.msi" -Action Install -ArgumentList "/qn ALLUSERS=1 ACCEPTEULA=YES CHECKFORUPDATESATSTARTUP=0 SOFTWARE_CLASS=Professional AUTHORIZATION_TYPE=NAMED_USER LICENSE_URL=`"https://msudenver.maps.arcgis.com`""
 
     ##================================================
     ## MARK: Post-Install
